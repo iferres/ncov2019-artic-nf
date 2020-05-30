@@ -7,7 +7,8 @@ From: continuumio/miniconda3:latest
 
 %post
 	apt-get update && apt-get install -y curl g++ git make procps rsync && apt-get clean -y
-	curl -o /environment.yml -fsSL 'https://raw.githubusercontent.com/artic-network/artic-ncov2019/master/environment.yml' 
+	curl -o /environment.yml -fsSL 'https://raw.githubusercontent.com/artic-network/artic-ncov2019/master/environment.yml'
+	echo "  - matplotlib=3.2.1" >> /environment.yml
 	/opt/conda/bin/conda env update -f /environment.yml -n base
 	/opt/conda/bin/conda clean -a
 
