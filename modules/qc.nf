@@ -1,6 +1,6 @@
 process makeQCCSV {
     tag { sampleName }
-
+    label 'qc'
     //conda 'environments/extras.txt'
 
     publishDir "${params.outdir}/qc_plots", pattern: "${sampleName}.depth.png", mode: 'copy'
@@ -27,6 +27,7 @@ process makeQCCSV {
 
 process writeQCSummaryCSV {
     tag { params.prefix }
+    label 'qc
 
     input:
     val lines

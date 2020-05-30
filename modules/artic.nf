@@ -4,6 +4,7 @@ process articDownloadScheme{
     tag params.schemeRepoURL
 
     label 'internet'
+    label 'artic'
 
     publishDir "${params.outdir}/${task.process.replaceAll(":","_")}", pattern: "scheme", mode: "copy"
 
@@ -22,6 +23,7 @@ process articGuppyPlex {
     tag { samplePrefix + "-" + fastqDir }
 
     label 'largemem'
+    label 'artic'
 
     publishDir "${params.outdir}/${task.process.replaceAll(":","_")}", pattern: "${params.prefix}*.fastq", mode: "copy"
 
@@ -45,6 +47,7 @@ process articMinIONMedaka {
     tag { sampleName }
 
     label 'largecpu'
+    label 'artic'
 
     publishDir "${params.outdir}/${task.process.replaceAll(":","_")}", pattern: "${sampleName}.*", mode: "copy"
 
@@ -92,6 +95,7 @@ process articMinIONNanopolish {
     tag { sampleName }
 
     label 'largecpu'
+    label 'artic'
 
     publishDir "${params.outdir}/${task.process.replaceAll(":","_")}", pattern: "${sampleName}.*", mode: "copy"
 
@@ -138,6 +142,7 @@ process articMinIONNanopolish {
 
 process articRemoveUnmappedReads {
     tag { sampleName }
+    label 'artic'
 
     cpus 1
 
