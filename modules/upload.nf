@@ -1,5 +1,6 @@
 process collateSamples {
     tag { sampleName }
+    label 'qc'
 
     publishDir "${params.outdir}/qc_pass_climb_upload/${params.prefix}", pattern: "${sampleName}", mode: 'copy'
 
