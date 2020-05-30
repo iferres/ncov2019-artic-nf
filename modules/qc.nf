@@ -27,7 +27,7 @@ process makeQCCSV {
 
 process writeQCSummaryCSV {
     tag { params.prefix }
-    label 'qc
+    label 'qc'
 
     input:
     val lines
