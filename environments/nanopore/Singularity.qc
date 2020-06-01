@@ -5,8 +5,8 @@ From: continuumio/miniconda3:latest
 	authors="Ignacio Ferrés" 
 	description="Singularity image containing all requirements for the QC of ARTIC project's ncov2019 pipeline, implemented by connorlab as a nextflow."
 %files
-	bin/qc.py /usr/local/bin
-	environments/qc.yml /opt
+	bin/qc.py /usr/local/bin/
+	environments/qc.yml /opt/
 
 %post
 	apt-get update && apt-get install -y curl g++ make && apt-get clean -y
