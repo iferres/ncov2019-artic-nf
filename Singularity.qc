@@ -9,7 +9,7 @@ From: continuumio/miniconda3:latest
 	environments/qc.yml /opt/
 
 %post
-	apt-get update && apt-get install -y curl g++ make && apt-get clean -y
+	apt-get update && apt-get install -y curl g++ make procps && apt-get clean -y
 	/opt/conda/bin/conda env update -f /opt/qc.yml -n base
 	/opt/conda/bin/conda clean -a
 
