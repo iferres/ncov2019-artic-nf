@@ -1,4 +1,6 @@
-This is a fork from the connorlab repo with some modifications for in-house usage only, at Institut Pasteur Montevideo. 
+[![https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://singularity-hub.org/collections/4396)
+
+*Note:* This is a fork from the [connorlab](https://github.com/connor-lab/ncov2019-artic-nf) repo with some modifications for in-house usage only, at Institut Pasteur Montevideo. Refer to the original repository.
 
 # ncov2019-artic-nf
 A Nextflow pipeline for running the ARTIC network's fieldbioinformatics tools (https://github.com/artic-network/fieldbioinformatics), with a focus on ncov2019 
