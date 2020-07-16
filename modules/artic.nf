@@ -14,9 +14,15 @@ process articDownloadScheme{
     path "scheme" , emit: scheme
 
     script:
-    """
-    git clone ${params.schemeRepoURL} scheme
-    """
+    if ( params.schemeVersion == 'L3' ){
+        """
+        git clone ${params.schemeLongURL} scheme
+        """
+    } else {
+        """
+        git clone ${params.schemeRepoURL} scheme
+        """
+    }
 }
 
 process articGuppyPlex {
@@ -52,11 +58,12 @@ process articMinIONMedaka {
     publishDir "${params.outdir}/${task.process.replaceAll(":","_")}", pattern: "${sampleName}.*", mode: "copy"
 
     input:
+
     tuple file(fastq), file(schemeRepo)
 
     output:
     file("${sampleName}.*")
-    
+
     tuple sampleName, file("${sampleName}.primertrimmed.rg.sorted.bam"), emit: ptrim
     tuple sampleName, file("${sampleName}.sorted.bam"), emit: mapped
     tuple sampleName, file("${sampleName}.consensus.fasta"), emit: consensus_fasta
@@ -71,7 +78,7 @@ process articMinIONMedaka {
     if ( params.normalise ) {
     minionRunConfigBuilder.add("--normalise ${params.normalise}")
     }
-    
+
     if ( params.bwa ) {
     minionRunConfigBuilder.add("--bwa")
     } else {
@@ -104,7 +111,7 @@ process articMinIONNanopolish {
 
     output:
     file("${sampleName}.*")
-    
+
     tuple sampleName, file("${sampleName}.primertrimmed.rg.sorted.bam"), emit: ptrim
     tuple sampleName, file("${sampleName}.sorted.bam"), emit: mapped
     tuple sampleName, file("${sampleName}.consensus.fasta"), emit: consensus_fasta
@@ -119,7 +126,7 @@ process articMinIONNanopolish {
     if ( params.normalise ) {
     minionRunConfigBuilder.add("--normalise ${params.normalise}")
     }
-    
+
     if ( params.bwa ) {
     minionRunConfigBuilder.add("--bwa")
     } else {
@@ -154,7 +161,6 @@ process articRemoveUnmappedReads {
 
     script:
     """
-    samtools view -F4 -o ${sampleName}.mapped.sorted.bam ${bamfile} 
+    samtools view -F4 -o ${sampleName}.mapped.sorted.bam ${bamfile}
     """
 }
-
